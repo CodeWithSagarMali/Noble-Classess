@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: noble-classes-backend
+    runtime: node
+    plan: free
+    buildCommand: npm run build
+    startCommand: npx prisma migrate deploy && npm run db:seed && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: CORS_ORIGIN
+        value: https://frontend-ten-woad-19.vercel.app
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: JWT_REFRESH_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: noble-classes-db
+          property: connectionString
+
+databases:
+  - name: noble-classes-db
+    plan: free

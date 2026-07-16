@@ -13,7 +13,7 @@
     "prisma:generate:sqlite": "prisma generate --schema prisma/schema.sqlite.prisma",
     "prisma:migrate:sqlite": "prisma migrate dev --schema prisma/schema.sqlite.prisma",
     "prisma:deploy": "prisma migrate deploy",
-    "db:seed": "ts-node prisma/seed.ts",
+    "db:seed": "node prisma/seed.js",
     "railway:start": "prisma migrate deploy && npm run db:seed && node dist/server.js"
   },
   "keywords": [
@@ -40,6 +40,7 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
     "pdfkit": "^0.14.0",
+    "prisma": "^5.10.2",
     "razorpay": "^2.9.2",
     "uuid": "^9.0.1",
     "xlsx": "^0.18.5"
