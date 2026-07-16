@@ -1,0 +1,37 @@
+# Checklist for Coaching Management System
+
+- `[x]` Project Setup & Backend Boilerplate
+  - `[x]` Create root directory config files (gitignoring, docker-compose, readme placeholder)
+  - `[x]` Setup Express.js with TypeScript and dependencies
+  - `[x]` Define Prisma models in `schema.prisma`
+- `[x]` Backend Services Implementation
+  - `[x]` JWT authentication service (Access & Refresh tokens) and Role Guard middleware
+  - `[x]` Upload service (Local storage fallback & AWS S3 compatible)
+  - `[x]` Excel parser service (Excel attendance sheet reader & verification)
+  - `[x]` PDF generator (Admission form & payment invoice generator)
+  - `[x]` Razorpay payment handler (Online transaction and verify webhook signature)
+- `[x]` Backend Controllers & API Routes
+  - `[x]` Authentication endpoints (Register, Login, Password Reset, Email Verification)
+  - `[x]` Admission management (Form submission, file uploads, approval workflow)
+  - `[x]` Academic routes (Course & Batch management, excel-based attendance upload)
+  - `[x]` Online Test routes (Create MCQ exam, take test, auto-evaluation, scoreboard leaderboard)
+  - `[x]` Admin dashboard analytics & audit logs routes
+  - `[x]` CMS routes (Blog, Gallery, Testimonials, Contact forms)
+  - `[x]` Database seed script for quick startup
+- `[x]` Frontend Setup & Core Design System
+  - `[x]` Initialize Vite React TypeScript project
+  - `[x]` Setup Tailwind CSS configuration with custom premium gradients and glassmorphism styling
+  - `[x]` Design Navbar, Footer, Floating WhatsApp widget, and Back-to-Top controls
+  - `[x]` Integrate React Router, React Query, and Axios HTTP client with interceptors
+- `[x]` Frontend Public Website
+  - `[x]` Homepage with premium sections (Why Choose Us, Stats, Achievements)
+  - `[x]` About, Courses list, Faculty, Gallery, Testimonials, FAQ, Contact, Career, Policy pages
+  - `[x]` Authentication forms (Registration, Logins, Password Recovery)
+- `[x]` Frontend Portals & Dashboards
+  - `[x]` Multi-step online Admission portal with image/document uploading & Razorpay payment trigger
+  - `[x]` Student Dashboard (Attendance charts, PDF downloads, MCQ Exam panel with countdown timer, support tickets)
+  - `[x]` Teacher Dashboard (Excel template download, Excel upload attendance, PDF notes upload, MCQ test constructor)
+  - `[x]` Admin Dashboard (Recharts charts, data tables for Student/Teacher/Batch management, contact inquiries, audit logs)
+- `[x]` Testing, Documentation & Containerization
+  - `[x]` Docker files setup (Dockerfile for Backend & Frontend, docker-compose)
+  - `[x]` Create README.md with comprehensive installation guide, API routes, Railway deployment guide, and testing instructions
