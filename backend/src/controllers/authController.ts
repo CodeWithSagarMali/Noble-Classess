@@ -9,6 +9,13 @@ import logger from '../utils/logger';
 const ACCESS_TOKEN_EXPIRY = '15m';
 const REFRESH_TOKEN_EXPIRY = '7d';
 
+// `sameSite: 'none'` is required for cross-origin auth (Vercel frontend -> Railway backend)
+const cookieOpts = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: (process.env.NODE_ENV === 'production' ? 'none' : 'lax') as 'none' | 'lax',
+};
+
 const getAccessToken = (id: string, role: string) => {
   return jwt.sign(
     { id, role },
@@ -115,15 +122,14 @@ export const login = async (
     });
 
     // Send tokens inside cookies and response
+    // `sameSite: 'none'` is required for cross-origin auth (Vercel frontend -> Railway backend)
     res.cookie('accessToken', accessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      ...cookieOpts,
       maxAge: 15 * 60 * 1000, // 15 mins
     });
 
     res.cookie('refreshToken', refreshToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      ...cookieOpts,
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
@@ -170,8 +176,7 @@ export const refresh = async (
     // Sign new access token
     const newAccessToken = getAccessToken(user.id, user.role);
     res.cookie('accessToken', newAccessToken, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      ...cookieOpts,
       maxAge: 15 * 60 * 1000,
     });
 

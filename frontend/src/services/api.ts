@@ -1,6 +1,13 @@
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+// Runtime API URL resolution:
+// 1. Build-time env (Vite) -> VITE_API_URL
+// 2. Runtime global injected by Vercel/Railway (window.__API_URL__)
+// 3. Local fallback
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  (typeof window !== 'undefined' && (window as any).__API_URL__) ||
+  'http://localhost:5000/api';
 
 const api = axios.create({
   baseURL: API_URL,

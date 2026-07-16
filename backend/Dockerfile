@@ -18,9 +18,11 @@ RUN npm run build
 FROM node:18-alpine AS runner
 
 WORKDIR /app
-
 COPY package*.json ./
 RUN npm ci --only=production
+
+# Prisma CLI is required at runtime for `migrate deploy` and seeding
+RUN npm install --no-save prisma ts-node
 
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/prisma ./prisma

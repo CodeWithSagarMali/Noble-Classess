@@ -101,6 +101,42 @@ noble_classes/
 
 ---
 
+## Deployment (Railway Backend + Vercel Frontend)
+
+The app is split across two hosts: the Express API runs on **Railway** (with a PostgreSQL plugin), and the React SPA runs on **Vercel**.
+
+### Backend on Railway
+
+1. In Railway, create a **New Project → Deploy from GitHub repo** and select this repo.
+2. Add a **PostgreSQL** plugin; Railway auto-injects `DATABASE_URL`.
+3. Set the following service variables:
+   | Variable | Value |
+   | -------- | ----- |
+   | `NODE_ENV` | `production` |
+   | `JWT_ACCESS_SECRET` | a long random string |
+   | `JWT_REFRESH_SECRET` | a long random string |
+   | `CORS_ORIGIN` | `https://<your-vercel-domain>` (comma-separated for multiple) |
+   | `PORT` | `5000` |
+   | `AWS_*` / `RAZORPAY_*` | leave empty for local/mock fallback |
+4. Railway builds with `backend/Dockerfile` and runs `railway.json` (`prisma migrate deploy` + seed + `node dist/server.js`). The `/health` endpoint is the healthcheck.
+5. Note: file uploads use ephemeral local storage on Railway; set `AWS_*` vars for persistent S3 storage.
+
+### Frontend on Vercel
+
+1. In Vercel, **Import** this repo and set the Root Directory to `frontend`.
+2. Build settings (auto-detected from `vercel.json`):
+   - Framework: **Vite**
+   - Install: `npm install --legacy-peer-deps`
+   - Build: `npm run build`
+   - Output: `dist`
+3. Add the build env var:
+   | Variable | Value |
+   | -------- | ----- |
+   | `VITE_API_URL` | `https://<your-railway-domain>/api` |
+4. Deploy. For runtime override without rebuild, the client also reads `window.__API_URL__`.
+
+---
+
 ## Seed Accounts (For Testing)
 
 | Role    | Email                  | Password     | Description |
