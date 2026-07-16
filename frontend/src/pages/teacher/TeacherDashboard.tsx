@@ -130,18 +130,18 @@ export const TeacherDashboard: React.FC = () => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Teacher Portal</h1>
-        <p className="text-sm text-slate-400 mt-1">Upload attendance sheets, create MCQ tests, and manage your batch.</p>
+        <h1 className="text-2xl font-extrabold text-white">Teacher Portal</h1>
+        <p className="text-sm text-white/60 mt-1">Upload attendance sheets, create MCQ tests, and manage your batch.</p>
       </div>
 
       {/* Attendance Upload Section */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-5">
+      <div className="bg-surface-1 border border-white/8 rounded-2xl p-6 space-y-5">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-            <FileSpreadsheet className="w-5 h-5 text-teal-500" /> Attendance Register (Excel Upload)
+          <h2 className="font-bold text-white flex items-center gap-2">
+            <FileSpreadsheet className="w-5 h-5 text-brand-rose-light" /> Attendance Register (Excel Upload)
           </h2>
           <button onClick={handleDownloadTemplate}
-            className="flex items-center gap-1.5 text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">
+            className="flex items-center gap-1.5 text-xs font-bold text-brand-rose hover:underline">
             <Download className="w-4 h-4" /> Download Template
           </button>
         </div>
@@ -151,14 +151,14 @@ export const TeacherDashboard: React.FC = () => {
             <label className="text-[10px] font-bold text-slate-400 uppercase">Batch ID</label>
             <input type="text" value={batchId} onChange={e => setBatchId(e.target.value)}
               placeholder="e.g. batch_uuid_here"
-              className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none" />
+              className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none" />
           </div>
           <div className="space-y-1.5">
             <label className="text-[10px] font-bold text-slate-400 uppercase">Excel File (.xlsx)</label>
             <label className={`flex items-center gap-3 w-full border-2 border-dashed rounded-xl px-4 py-3 cursor-pointer transition-colors ${
-              file ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800 hover:border-teal-400'
+              file ? 'border-brand-rose bg-brand-rose/5' : 'border-white/8 hover:border-brand-rose-light'
             }`}>
-              <Upload className="w-4 h-4 text-teal-500 shrink-0" />
+              <Upload className="w-4 h-4 text-brand-rose-light shrink-0" />
               <span className="text-sm text-slate-500 truncate">{file ? file.name : 'Click to select .xlsx file'}</span>
               <input ref={fileRef} type="file" accept=".xlsx,.xls" onChange={e => setFile(e.target.files?.[0] || null)} className="hidden" />
             </label>
@@ -173,18 +173,18 @@ export const TeacherDashboard: React.FC = () => {
           }`}>
             <div className="flex items-center gap-2">
               {uploadResult.errors?.length > 0 ? <AlertTriangle className="w-5 h-5 text-amber-500" /> : <CheckCircle2 className="w-5 h-5 text-green-500" />}
-              <p className="text-sm font-bold text-slate-800 dark:text-slate-100">{uploadResult.message}</p>
+              <p className="text-sm font-bold text-white">{uploadResult.message}</p>
             </div>
             <div className="grid grid-cols-4 gap-2 text-xs text-center">
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg">{uploadResult.summary?.totalParsed}</p><p className="text-slate-400">Parsed</p></div>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg text-green-500">{uploadResult.summary?.inserted}</p><p className="text-slate-400">Inserted</p></div>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg text-amber-500">{uploadResult.summary?.skippedDuplicates}</p><p className="text-slate-400">Duplicates</p></div>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg text-rose-500">{uploadResult.summary?.failed}</p><p className="text-slate-400">Failed</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg">{uploadResult.summary?.totalParsed}</p><p className="text-white/60">Parsed</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg text-emerald-400">{uploadResult.summary?.inserted}</p><p className="text-white/60">Inserted</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg text-amber-400">{uploadResult.summary?.skippedDuplicates}</p><p className="text-white/60">Duplicates</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg text-brand-rose-light">{uploadResult.summary?.failed}</p><p className="text-white/60">Failed</p></div>
             </div>
             {uploadResult.errors?.length > 0 && (
               <div className="mt-3 space-y-1 max-h-32 overflow-y-auto">
                 {uploadResult.errors.map((e: string, i: number) => (
-                  <p key={i} className="text-xs text-amber-600 dark:text-amber-400">• {e}</p>
+                  <p key={i} className="text-xs text-amber-400">• {e}</p>
                 ))}
               </div>
             )}
@@ -192,27 +192,27 @@ export const TeacherDashboard: React.FC = () => {
         )}
 
         <button onClick={handleUpload} disabled={uploading || !file || !batchId}
-          className="flex items-center gap-2 px-6 py-2.5 bg-teal-600 hover:bg-teal-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl transition-colors">
+          className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-brand-rose to-brand-orange hover:from-brand-rose-dark hover:to-brand-orange-dark disabled:opacity-50 text-white text-sm font-bold rounded-xl transition-colors">
           {uploading ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Upload className="w-4 h-4" />}
           {uploading ? 'Processing...' : 'Upload & Process Attendance'}
         </button>
       </div>
 
       {/* PDF Study Material Upload Section */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-5">
-        <h2 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-          <FileText className="w-5 h-5 text-teal-500" /> Upload Study Material (PDF)
+      <div className="bg-surface-1 border border-white/8 rounded-2xl p-6 space-y-5">
+        <h2 className="font-bold text-white flex items-center gap-2">
+          <FileText className="w-5 h-5 text-brand-rose-light" /> Upload Study Material (PDF)
         </h2>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <label className="text-[10px] font-bold text-slate-400 uppercase">Title</label>
             <input type="text" value={pdfTitle} onChange={e => setPdfTitle(e.target.value)} placeholder="e.g. Physics Chapter 12 Notes"
-              className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none" />
+              className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none" />
           </div>
           <div className="space-y-1.5">
             <label className="text-[10px] font-bold text-slate-400 uppercase">Course</label>
-            <select value={pdfCourseId} onChange={e => setPdfCourseId(e.target.value)} className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none">
+              <select value={pdfCourseId} onChange={e => setPdfCourseId(e.target.value)} className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none">
               <option value="">Select Course</option>
               {courses.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
             </select>
@@ -220,12 +220,12 @@ export const TeacherDashboard: React.FC = () => {
           <div className="space-y-1.5 sm:col-span-2">
             <label className="text-[10px] font-bold text-slate-400 uppercase">Description (optional)</label>
             <input type="text" value={pdfDescription} onChange={e => setPdfDescription(e.target.value)} placeholder="Brief description of the material"
-              className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none" />
+              className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none" />
           </div>
           <div className="space-y-1.5 sm:col-span-2">
             <label className="text-[10px] font-bold text-slate-400 uppercase">PDF File</label>
-            <label className={`flex items-center gap-3 w-full border-2 border-dashed rounded-xl px-4 py-3 cursor-pointer transition-colors ${pdfFile ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800 hover:border-teal-400'}`}>
-              <Upload className="w-4 h-4 text-teal-500 shrink-0" />
+              <label className={`flex items-center gap-3 w-full border-2 border-dashed rounded-xl px-4 py-3 cursor-pointer transition-colors ${pdfFile ? 'border-brand-rose bg-brand-rose/5' : 'border-white/8 hover:border-brand-rose-light'}`}>
+              <Upload className="w-4 h-4 text-brand-rose-light shrink-0" />
               <span className="text-sm text-slate-500 truncate">{pdfFile ? pdfFile.name : 'Click to select PDF file'}</span>
               <input ref={pdfFileRef} type="file" accept=".pdf" onChange={e => setPdfFile(e.target.files?.[0] || null)} className="hidden" />
             </label>
@@ -238,28 +238,28 @@ export const TeacherDashboard: React.FC = () => {
           <div className="border border-green-500/20 bg-green-500/5 rounded-xl p-4 space-y-2">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-green-500" />
-              <p className="text-sm font-bold text-slate-800 dark:text-slate-100">{pdfUploadResult.message || 'PDF uploaded successfully!'}</p>
+              <p className="text-sm font-bold text-white">{pdfUploadResult.message || 'PDF uploaded successfully!'}</p>
             </div>
           </div>
         )}
 
         <button onClick={handlePdfUpload} disabled={pdfUploading || !pdfFile || !pdfCourseId || !pdfTitle}
-          className="flex items-center gap-2 px-6 py-2.5 bg-teal-600 hover:bg-teal-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl transition-colors">
+          className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-brand-rose to-brand-orange hover:from-brand-rose-dark hover:to-brand-orange-dark disabled:opacity-50 text-white text-sm font-bold rounded-xl transition-colors">
           {pdfUploading ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Upload className="w-4 h-4" />}
           {pdfUploading ? 'Uploading...' : 'Upload PDF'}
         </button>
       </div>
 
       {/* MCQ Test Creator */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-5">
-        <h2 className="font-bold text-slate-800 dark:text-slate-100">Construct MCQ Online Test</h2>
+      <div className="bg-surface-1 border border-white/8 rounded-2xl p-6 space-y-5">
+        <h2 className="font-bold text-white">Construct MCQ Online Test</h2>
 
         {examSuccess ? (
           <div className="text-center py-8 space-y-3">
-            <CheckCircle2 className="w-12 h-12 text-teal-500 mx-auto" />
-            <p className="font-bold text-teal-600 dark:text-teal-400">Exam created and published successfully!</p>
+            <CheckCircle2 className="w-12 h-12 text-brand-rose-light mx-auto" />
+            <p className="font-bold text-brand-rose">Exam created and published successfully!</p>
             <button onClick={() => { setExamSuccess(false); setExamForm({ title: '', description: '', durationMinutes: '45', totalMarks: '20', negativeMarking: '1', batchId: '', scheduledAt: '', expiresAt: '' }); setQuestions([{ questionText: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', positiveMarks: '4', negativeMarks: '1' }]); }}
-              className="text-xs font-bold text-teal-600 hover:underline">Create another exam</button>
+              className="text-xs font-bold text-brand-rose hover:underline">Create another exam</button>
           </div>
         ) : (
           <>
@@ -280,7 +280,7 @@ export const TeacherDashboard: React.FC = () => {
                     value={examForm[field.name]}
                     onChange={e => setExamForm(prev => ({ ...prev, [field.name]: e.target.value }))}
                     placeholder={field.placeholder}
-                    className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none" />
+                    className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none" />
                 </div>
               ))}
             </div>
@@ -288,43 +288,43 @@ export const TeacherDashboard: React.FC = () => {
             <div className="space-y-1.5">
               <label className="text-[10px] font-bold text-slate-400 uppercase">Description</label>
               <textarea value={examForm.description} onChange={e => setExamForm(prev => ({ ...prev, description: e.target.value }))} rows={2}
-                className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none resize-none" />
+                className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none resize-none" />
             </div>
 
             {/* Questions */}
             <div className="space-y-4">
-              <h3 className="font-bold text-sm text-slate-700 dark:text-slate-300">Questions ({questions.length})</h3>
+              <h3 className="font-bold text-sm text-white/70">Questions ({questions.length})</h3>
               {questions.map((q, qi) => (
-                <div key={qi} className="border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3 bg-slate-50 dark:bg-slate-950">
-                  <p className="text-xs font-bold text-slate-500">Question {qi + 1}</p>
+                <div key={qi} className="border border-white/8 rounded-xl p-4 space-y-3 bg-surface-2">
+                  <p className="text-xs font-bold text-white/50">Question {qi + 1}</p>
                   <input type="text" placeholder="Question text..." value={q.questionText}
                     onChange={e => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, questionText: e.target.value } : p))}
-                    className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-teal-500" />
+                    className="w-full bg-surface-2 border border-white/10 rounded-xl px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-brand-rose" />
                   <div className="grid grid-cols-2 gap-2">
                     {(['A', 'B', 'C', 'D'] as const).map(opt => (
                       <input key={opt} type="text" placeholder={`Option ${opt}`}
                         value={q[`option${opt}` as keyof typeof q] as string}
                         onChange={e => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, [`option${opt}`]: e.target.value } : p))}
-                        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-teal-500" />
+                        className="bg-surface-2 border border-white/10 rounded-xl px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-brand-rose" />
                     ))}
                   </div>
                   <div className="flex items-center gap-3">
-                    <label className="text-[10px] font-bold text-slate-400 uppercase">Correct Answer</label>
+                    <label className="text-[10px] font-bold text-white/60 uppercase">Correct Answer</label>
                     {(['A', 'B', 'C', 'D'] as const).map(opt => (
                       <button key={opt} type="button"
                         onClick={() => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, correctAnswer: opt } : p))}
-                        className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${q.correctAnswer === opt ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>
+                        className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${q.correctAnswer === opt ? 'bg-brand-rose text-white' : 'bg-white/5 text-white/50'}`}>
                         {opt}
                       </button>
                     ))}
                   </div>
                 </div>
               ))}
-              <button onClick={addQuestion} className="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">+ Add Another Question</button>
+              <button onClick={addQuestion} className="text-xs font-bold text-brand-rose hover:underline">+ Add Another Question</button>
             </div>
 
             <button onClick={handleExamSubmit} disabled={examSubmitting || !examForm.title || !examForm.batchId}
-              className="w-full py-3 bg-teal-600 hover:bg-teal-700 disabled:opacity-50 text-white font-semibold rounded-xl transition-colors">
+              className="w-full py-3 bg-gradient-to-r from-brand-rose to-brand-orange hover:from-brand-rose-dark hover:to-brand-orange-dark disabled:opacity-50 text-white font-semibold rounded-xl transition-colors">
               {examSubmitting ? 'Publishing...' : 'Publish MCQ Exam'}
             </button>
           </>

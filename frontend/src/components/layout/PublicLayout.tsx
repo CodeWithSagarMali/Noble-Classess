@@ -7,7 +7,7 @@ import BackToTop from '../common/BackToTop';
 
 export const PublicLayout: React.FC = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-[#0F0F1A]">
       <Navbar />
       <main className="flex-grow">
         <Outlet />

@@ -99,7 +99,7 @@ export const ExamPlayer: React.FC = () => {
 
   const formatTime = (s: number) => `${Math.floor(s / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`;
 
-  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-4 border-teal-500 border-t-transparent rounded-full animate-spin" /></div>;
+  if (loading) return <div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-4 border-brand-rose border-t-transparent rounded-full animate-spin" /></div>;
 
   if (result) {
     const maxMarks = exam?.totalMarks || (result.totalQuestions * (questions[0]?.positiveMarks ?? 4));
@@ -107,22 +107,22 @@ export const ExamPlayer: React.FC = () => {
     return (
       <div className="max-w-lg mx-auto space-y-6 text-center py-10">
         <Trophy className="w-16 h-16 text-amber-400 mx-auto" />
-        <h1 className="text-3xl font-extrabold text-slate-800 dark:text-slate-100">Exam Submitted!</h1>
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 space-y-4">
-          <p className="text-5xl font-extrabold text-teal-600 dark:text-teal-400">{result.marksObtained}</p>
-          <p className="text-slate-400 text-sm font-semibold">Marks Obtained</p>
-          <div className="grid grid-cols-3 gap-4 text-center border-t border-slate-100 dark:border-slate-800 pt-4">
-            <div><p className="text-lg font-bold text-green-500">{result.correctAnswers}</p><p className="text-xs text-slate-400">Correct</p></div>
-            <div><p className="text-lg font-bold text-rose-500">{result.wrongAnswers}</p><p className="text-xs text-slate-400">Wrong</p></div>
-            <div><p className="text-lg font-bold text-slate-500">{result.totalQuestions - result.attemptedQuestions}</p><p className="text-xs text-slate-400">Skipped</p></div>
+        <h1 className="text-3xl font-extrabold text-white">Exam Submitted!</h1>
+        <div className="bg-surface-1 border border-white/8 rounded-2xl p-8 space-y-4">
+          <p className="text-5xl font-extrabold text-brand-rose">{result.marksObtained}</p>
+          <p className="text-white/50 text-sm font-semibold">Marks Obtained</p>
+          <div className="grid grid-cols-3 gap-4 text-center border-t border-white/8 pt-4">
+            <div><p className="text-lg font-bold text-green-500">{result.correctAnswers}</p><p className="text-xs text-white/50">Correct</p></div>
+            <div><p className="text-lg font-bold text-brand-rose">{result.wrongAnswers}</p><p className="text-xs text-white/50">Wrong</p></div>
+            <div><p className="text-lg font-bold text-white/50">{result.totalQuestions - result.attemptedQuestions}</p><p className="text-xs text-white/50">Skipped</p></div>
           </div>
-          <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 mt-2">
-            <div className="bg-teal-500 h-2.5 rounded-full transition-all" style={{ width: `${percentage}%` }} />
+          <div className="w-full bg-white/5 rounded-full h-2.5 mt-2">
+            <div className="bg-brand-rose h-2.5 rounded-full transition-all" style={{ width: `${percentage}%` }} />
           </div>
-          <p className="text-xs text-slate-400">{percentage}% Score</p>
+          <p className="text-xs text-white/50">{percentage}% Score</p>
         </div>
         <button onClick={() => navigate('/student/dashboard')}
-          className="px-8 py-3 bg-teal-600 text-white font-semibold rounded-xl hover:bg-teal-700 transition-colors">
+          className="px-8 py-3 bg-gradient-to-r from-brand-rose to-brand-orange text-white font-semibold rounded-xl hover:from-brand-rose-dark hover:to-brand-orange-dark transition-colors">
           Back to Dashboard
         </button>
       </div>
@@ -134,13 +134,13 @@ export const ExamPlayer: React.FC = () => {
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       {/* Exam Header Bar */}
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-4 flex items-center justify-between">
+      <div className="bg-surface-1 border border-white/8 rounded-2xl p-4 flex items-center justify-between">
         <div>
-          <h1 className="font-bold text-slate-800 dark:text-slate-100 text-sm">{exam?.title}</h1>
-          <p className="text-xs text-slate-400">Question {currentQ + 1} of {questions.length}</p>
+          <h1 className="font-bold text-white text-sm">{exam?.title}</h1>
+          <p className="text-xs text-white/50">Question {currentQ + 1} of {questions.length}</p>
         </div>
         <div className={`flex items-center gap-2 font-bold text-lg px-4 py-2 rounded-xl ${
-          timeLeft < 300 ? 'bg-rose-500/10 text-rose-500 animate-pulse' : 'bg-teal-500/10 text-teal-600 dark:text-teal-400'
+          timeLeft < 300 ? 'bg-brand-rose/10 text-brand-rose animate-pulse' : 'bg-brand-rose/10 text-brand-rose'
         }`}>
           <Clock className="w-5 h-5" />
           {formatTime(timeLeft)}
@@ -152,9 +152,9 @@ export const ExamPlayer: React.FC = () => {
         {questions.map((_, idx) => (
           <button key={idx} onClick={() => setCurrentQ(idx)}
             className={`w-8 h-8 text-xs font-bold rounded-lg transition-colors ${
-              idx === currentQ ? 'bg-teal-600 text-white' :
-              answers[questions[idx].id] ? 'bg-teal-500/20 text-teal-600 dark:text-teal-400' :
-              'bg-slate-100 dark:bg-slate-800 text-slate-500'
+              idx === currentQ ? 'bg-brand-rose text-white' :
+              answers[questions[idx].id] ? 'bg-brand-rose/20 text-brand-rose' :
+              'bg-white/5 text-white/50'
             }`}>
             {idx + 1}
           </button>
@@ -163,12 +163,12 @@ export const ExamPlayer: React.FC = () => {
 
       {/* Question Card */}
       {q && (
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-6">
+        <div className="bg-surface-1 border border-white/8 rounded-2xl p-6 space-y-6">
           <div className="space-y-2">
-            <div className="flex items-center gap-2 text-xs text-slate-400 font-semibold">
-              <span className="bg-teal-500/10 text-teal-600 dark:text-teal-400 px-2 py-0.5 rounded">+{q.positiveMarks} / -{q.negativeMarks}</span>
+            <div className="flex items-center gap-2 text-xs text-white/50 font-semibold">
+              <span className="bg-brand-rose/10 text-brand-rose px-2 py-0.5 rounded">+{q.positiveMarks} / -{q.negativeMarks}</span>
             </div>
-            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100 leading-relaxed">{q.questionText}</p>
+            <p className="text-sm font-semibold text-white leading-relaxed">{q.questionText}</p>
           </div>
           <div className="space-y-3">
             {(['A', 'B', 'C', 'D'] as const).map((opt) => {
@@ -177,12 +177,12 @@ export const ExamPlayer: React.FC = () => {
               return (
                 <button key={opt} onClick={() => handleAnswer(q.id, opt)}
                   className={`w-full text-left flex items-start gap-3 p-4 rounded-xl border-2 transition-all ${
-                    isSelected ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800 hover:border-teal-400'
+                    isSelected ? 'border-brand-rose bg-brand-rose/5' : 'border-white/8 hover:border-brand-rose-light'
                   }`}>
                   <span className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${
-                    isSelected ? 'bg-teal-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-500'
+                    isSelected ? 'bg-brand-rose text-white' : 'bg-white/5 text-white/50'
                   }`}>{opt}</span>
-                  <span className="text-sm text-slate-700 dark:text-slate-300 pt-0.5">{text}</span>
+                  <span className="text-sm text-white/90 pt-0.5">{text}</span>
                 </button>
               );
             })}
@@ -193,17 +193,17 @@ export const ExamPlayer: React.FC = () => {
       {/* Navigation */}
       <div className="flex items-center justify-between gap-4">
         <button onClick={() => setCurrentQ(q => Math.max(0, q - 1))} disabled={currentQ === 0}
-          className="px-5 py-2.5 border border-slate-200 dark:border-slate-800 rounded-xl text-sm font-semibold disabled:opacity-40 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+          className="px-5 py-2.5 border border-white/8 rounded-xl text-sm font-semibold disabled:opacity-40 hover:bg-white/5 transition-colors">
           ← Previous
         </button>
         {currentQ < questions.length - 1 ? (
           <button onClick={() => setCurrentQ(q => q + 1)}
-            className="px-5 py-2.5 bg-slate-900 dark:bg-slate-700 text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity">
+            className="px-5 py-2.5 bg-surface-3 text-white rounded-xl text-sm font-semibold hover:opacity-90 transition-opacity">
             Next →
           </button>
         ) : (
           <button onClick={() => handleSubmit()} disabled={submitting}
-            className="px-6 py-2.5 bg-teal-600 text-white rounded-xl text-sm font-bold hover:bg-teal-700 disabled:opacity-50 transition-colors">
+            className="px-6 py-2.5 bg-gradient-to-r from-brand-rose to-brand-orange text-white rounded-xl text-sm font-bold hover:from-brand-rose-dark hover:to-brand-orange-dark disabled:opacity-50 transition-colors">
             {submitting ? 'Submitting...' : '✓ Submit Exam'}
           </button>
         )}

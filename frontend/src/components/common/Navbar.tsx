@@ -52,7 +52,7 @@ export const Navbar: React.FC = () => {
 
   const navLinkClass = (active = false) =>
     `text-sm font-medium transition-colors duration-200 ${active
-      ? 'text-violet-400'
+      ? 'text-brand-rose-light'
       : 'text-white/70 hover:text-white'
     }`;
 
@@ -68,7 +68,7 @@ export const Navbar: React.FC = () => {
 
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 group shrink-0">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-600 to-violet-800 flex items-center justify-center shadow-lg shadow-violet-900/50">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-rose to-brand-rose-dark flex items-center justify-center shadow-lg shadow-violet-900/50">
                 <GraduationCap className="w-4.5 h-4.5 text-white" />
               </div>
               <span className="font-display font-extrabold text-lg tracking-tight">
@@ -101,7 +101,7 @@ export const Navbar: React.FC = () => {
                       className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[520px]"
                     >
                       <div className="glass rounded-2xl border border-white/10 p-5 shadow-2xl shadow-black/50">
-                        <p className="text-2xs font-bold text-violet-400 uppercase tracking-widest mb-4">Our Programs</p>
+                        <p className="text-2xs font-bold text-brand-rose-light uppercase tracking-widest mb-4">Our Programs</p>
                         <div className="grid grid-cols-2 gap-2">
                           {programs.map((p) => (
                             <Link
@@ -109,12 +109,12 @@ export const Navbar: React.FC = () => {
                               to={p.to}
                               className="flex items-start gap-3 p-3 rounded-xl hover:bg-white/5 transition-colors group"
                             >
-                              <div className="w-9 h-9 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center shrink-0 mt-0.5">
-                                <p.icon className="w-4.5 h-4.5 text-violet-400" />
+                              <div className="w-9 h-9 rounded-lg bg-brand-rose/10 border border-brand-rose/20 flex items-center justify-center shrink-0 mt-0.5">
+                                <p.icon className="w-4.5 h-4.5 text-brand-rose-light" />
                               </div>
                               <div>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-sm font-semibold text-white group-hover:text-violet-300 transition-colors">{p.label}</span>
+                                  <span className="text-sm font-semibold text-white group-hover:text-brand-rose-light transition-colors">{p.label}</span>
                                   {p.badge && (
                                     <span className="badge-orange text-[9px] py-0.5">{p.badge}</span>
                                   )}
@@ -163,7 +163,7 @@ export const Navbar: React.FC = () => {
                     to={dashboardRoute}
                     className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/8 hover:bg-white/12 border border-white/10 text-sm font-medium text-white transition-all"
                   >
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-violet-500 to-violet-700 flex items-center justify-center text-white text-[10px] font-bold">
+                    <div className="w-5 h-5 rounded-full bg-gradient-to-br from-brand-rose to-brand-rose-dark flex items-center justify-center text-white text-[10px] font-bold">
                       {user.email[0].toUpperCase()}
                     </div>
                     Dashboard
@@ -236,7 +236,7 @@ export const Navbar: React.FC = () => {
               {/* Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/8">
                 <div className="flex items-center gap-2">
-                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-violet-600 to-violet-800 flex items-center justify-center">
+                  <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-rose to-brand-rose-dark flex items-center justify-center">
                     <GraduationCap className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-bold text-white text-sm">Noble Classes</span>
@@ -271,7 +271,7 @@ export const Navbar: React.FC = () => {
                   <>
                     <Link
                       to={dashboardRoute}
-                      className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-violet-600 text-white text-sm font-semibold"
+                      className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-xl bg-brand-rose text-white text-sm font-semibold"
                     >
                       <User className="w-4 h-4" />
                       Go to Dashboard

@@ -45,11 +45,11 @@ export const TeacherCreateTestPage: React.FC = () => {
   if (examSuccess) {
     return (
       <div className="space-y-6">
-        <h1 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Construct MCQ Online Test</h1>
-        <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-12 text-center space-y-4">
-          <CheckCircle2 className="w-16 h-16 text-teal-500 mx-auto" />
-          <p className="font-bold text-teal-600 dark:text-teal-400 text-lg">Exam created and published successfully!</p>
-          <button onClick={() => { setExamSuccess(false); setExamForm({ title: '', description: '', durationMinutes: '45', totalMarks: '20', negativeMarking: '1', batchId: '', scheduledAt: '', expiresAt: '' }); setQuestions([{ questionText: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', positiveMarks: '4', negativeMarks: '1' }]); }} className="text-xs font-bold text-teal-600 hover:underline">Create another exam</button>
+        <h1 className="text-2xl font-extrabold text-white">Construct MCQ Online Test</h1>
+        <div className="bg-surface-1 border border-white/8 rounded-2xl p-12 text-center space-y-4">
+          <CheckCircle2 className="w-16 h-16 text-brand-rose-light mx-auto" />
+          <p className="font-bold text-brand-rose text-lg">Exam created and published successfully!</p>
+          <button onClick={() => { setExamSuccess(false); setExamForm({ title: '', description: '', durationMinutes: '45', totalMarks: '20', negativeMarking: '1', batchId: '', scheduledAt: '', expiresAt: '' }); setQuestions([{ questionText: '', optionA: '', optionB: '', optionC: '', optionD: '', correctAnswer: 'A', positiveMarks: '4', negativeMarks: '1' }]); }} className="text-xs font-bold text-brand-rose hover:underline">Create another exam</button>
         </div>
       </div>
     );
@@ -57,8 +57,8 @@ export const TeacherCreateTestPage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Construct MCQ Online Test</h1>
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-5">
+      <h1 className="text-2xl font-extrabold text-white">Construct MCQ Online Test</h1>
+      <div className="bg-surface-1 border border-white/8 rounded-2xl p-6 space-y-5">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {([
             { name: 'title', label: 'Exam Title', placeholder: 'Physics Mock Test #1' },
@@ -70,37 +70,37 @@ export const TeacherCreateTestPage: React.FC = () => {
             { name: 'expiresAt', label: 'Expires At', placeholder: '' },
           ] as const).map(field => (
             <div key={field.name} className="space-y-1.5">
-              <label className="text-[10px] font-bold text-slate-400 uppercase">{field.label}</label>
-              <input type={field.name.includes('At') ? 'datetime-local' : 'text'} value={examForm[field.name]} onChange={e => setExamForm(prev => ({ ...prev, [field.name]: e.target.value }))} placeholder={field.placeholder} className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none" />
+              <label className="text-[10px] font-bold text-white/60 uppercase">{field.label}</label>
+              <input type={field.name.includes('At') ? 'datetime-local' : 'text'} value={examForm[field.name]} onChange={e => setExamForm(prev => ({ ...prev, [field.name]: e.target.value }))} placeholder={field.placeholder} className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none" />
             </div>
           ))}
         </div>
         <div className="space-y-1.5">
-          <label className="text-[10px] font-bold text-slate-400 uppercase">Description</label>
-          <textarea value={examForm.description} onChange={e => setExamForm(prev => ({ ...prev, description: e.target.value }))} rows={2} className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none resize-none" />
+          <label className="text-[10px] font-bold text-white/60 uppercase">Description</label>
+          <textarea value={examForm.description} onChange={e => setExamForm(prev => ({ ...prev, description: e.target.value }))} rows={2} className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none resize-none" />
         </div>
         <div className="space-y-4">
-          <h3 className="font-bold text-sm text-slate-700 dark:text-slate-300">Questions ({questions.length})</h3>
+          <h3 className="font-bold text-sm text-white/70">Questions ({questions.length})</h3>
           {questions.map((q, qi) => (
-            <div key={qi} className="border border-slate-200 dark:border-slate-800 rounded-xl p-4 space-y-3 bg-slate-50 dark:bg-slate-950">
-              <p className="text-xs font-bold text-slate-500">Question {qi + 1}</p>
-              <input type="text" placeholder="Question text..." value={q.questionText} onChange={e => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, questionText: e.target.value } : p))} className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-teal-500" />
+            <div key={qi} className="border border-white/8 rounded-xl p-4 space-y-3 bg-surface-2">
+              <p className="text-xs font-bold text-white/50">Question {qi + 1}</p>
+              <input type="text" placeholder="Question text..." value={q.questionText} onChange={e => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, questionText: e.target.value } : p))} className="w-full bg-surface-2 border border-white/10 rounded-xl px-3 py-2 text-sm outline-none focus:ring-1 focus:ring-brand-rose" />
               <div className="grid grid-cols-2 gap-2">
                 {(['A', 'B', 'C', 'D'] as const).map(opt => (
-                  <input key={opt} type="text" placeholder={`Option ${opt}`} value={q[`option${opt}` as keyof Question]} onChange={e => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, [`option${opt}`]: e.target.value } : p))} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-teal-500" />
+                  <input key={opt} type="text" placeholder={`Option ${opt}`} value={q[`option${opt}` as keyof Question]} onChange={e => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, [`option${opt}`]: e.target.value } : p))} className="bg-surface-2 border border-white/10 rounded-xl px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-brand-rose" />
                 ))}
               </div>
               <div className="flex items-center gap-3">
-                <label className="text-[10px] font-bold text-slate-400 uppercase">Correct Answer</label>
+                <label className="text-[10px] font-bold text-white/60 uppercase">Correct Answer</label>
                 {(['A', 'B', 'C', 'D'] as const).map(opt => (
-                  <button key={opt} type="button" onClick={() => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, correctAnswer: opt } : p))} className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${q.correctAnswer === opt ? 'bg-teal-600 text-white' : 'bg-slate-200 dark:bg-slate-800 text-slate-500'}`}>{opt}</button>
+                  <button key={opt} type="button" onClick={() => setQuestions(prev => prev.map((p, i) => i === qi ? { ...p, correctAnswer: opt } : p))} className={`w-8 h-8 rounded-lg text-xs font-bold transition-colors ${q.correctAnswer === opt ? 'bg-brand-rose text-white' : 'bg-white/5 text-white/50'}`}>{opt}</button>
                 ))}
               </div>
             </div>
           ))}
-          <button onClick={addQuestion} className="text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">+ Add Another Question</button>
+          <button onClick={addQuestion} className="text-xs font-bold text-brand-rose hover:underline">+ Add Another Question</button>
         </div>
-        <button onClick={handleExamSubmit} disabled={examSubmitting || !examForm.title || !examForm.batchId} className="w-full py-3 bg-teal-600 hover:bg-teal-700 disabled:opacity-50 text-white font-semibold rounded-xl transition-colors">
+        <button onClick={handleExamSubmit} disabled={examSubmitting || !examForm.title || !examForm.batchId} className="w-full py-3 bg-gradient-to-r from-brand-rose to-brand-orange hover:from-brand-rose-dark hover:to-brand-orange-dark disabled:opacity-50 text-white font-semibold rounded-xl transition-colors">
           {examSubmitting ? 'Publishing...' : 'Publish MCQ Exam'}
         </button>
       </div>

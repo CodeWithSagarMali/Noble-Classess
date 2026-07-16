@@ -47,25 +47,25 @@ export const TeacherAttendancePage: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-2xl font-extrabold text-slate-800 dark:text-slate-100">Class Register (Excel)</h1>
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 space-y-5">
+      <h1 className="text-2xl font-extrabold text-white">Class Register (Excel)</h1>
+      <div className="bg-surface-1 border border-white/8 rounded-2xl p-6 space-y-5">
         <div className="flex items-center justify-between">
-          <h2 className="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
-            <FileSpreadsheet className="w-5 h-5 text-teal-500" /> Attendance Upload
+          <h2 className="font-bold text-white flex items-center gap-2">
+            <FileSpreadsheet className="w-5 h-5 text-brand-rose-light" /> Attendance Upload
           </h2>
-          <button onClick={handleDownloadTemplate} className="flex items-center gap-1.5 text-xs font-bold text-teal-600 dark:text-teal-400 hover:underline">
+          <button onClick={handleDownloadTemplate} className="flex items-center gap-1.5 text-xs font-bold text-brand-rose hover:underline">
             <Download className="w-4 h-4" /> Download Template
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="space-y-1.5">
             <label className="text-[10px] font-bold text-slate-400 uppercase">Batch ID</label>
-            <input type="text" value={batchId} onChange={e => setBatchId(e.target.value)} placeholder="e.g. batch_uuid_here" className="w-full bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-teal-500 outline-none" />
+            <input type="text" value={batchId} onChange={e => setBatchId(e.target.value)} placeholder="e.g. batch_uuid_here" className="w-full bg-surface-2 border border-white/10 rounded-xl px-4 py-2.5 text-sm focus:ring-1 focus:ring-brand-rose outline-none" />
           </div>
           <div className="space-y-1.5">
             <label className="text-[10px] font-bold text-slate-400 uppercase">Excel File (.xlsx)</label>
-            <label className={`flex items-center gap-3 w-full border-2 border-dashed rounded-xl px-4 py-3 cursor-pointer transition-colors ${file ? 'border-teal-500 bg-teal-500/5' : 'border-slate-200 dark:border-slate-800 hover:border-teal-400'}`}>
-              <Upload className="w-4 h-4 text-teal-500 shrink-0" />
+            <label className={`flex items-center gap-3 w-full border-2 border-dashed rounded-xl px-4 py-3 cursor-pointer transition-colors ${file ? 'border-brand-rose bg-brand-rose/5' : 'border-white/8 hover:border-brand-rose-light'}`}>
+              <Upload className="w-4 h-4 text-brand-rose-light shrink-0" />
               <span className="text-sm text-slate-500 truncate">{file ? file.name : 'Click to select .xlsx file'}</span>
               <input ref={fileRef} type="file" accept=".xlsx,.xls" onChange={e => setFile(e.target.files?.[0] || null)} className="hidden" />
             </label>
@@ -76,22 +76,22 @@ export const TeacherAttendancePage: React.FC = () => {
           <div className={`border rounded-xl p-4 space-y-2 ${uploadResult.errors?.length > 0 ? 'bg-amber-500/5 border-amber-500/20' : 'bg-green-500/5 border-green-500/20'}`}>
             <div className="flex items-center gap-2">
               {uploadResult.errors?.length > 0 ? <AlertTriangle className="w-5 h-5 text-amber-500" /> : <CheckCircle2 className="w-5 h-5 text-green-500" />}
-              <p className="text-sm font-bold text-slate-800 dark:text-slate-100">{uploadResult.message}</p>
+              <p className="text-sm font-bold text-white">{uploadResult.message}</p>
             </div>
             <div className="grid grid-cols-4 gap-2 text-xs text-center">
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg">{uploadResult.summary?.totalParsed}</p><p className="text-slate-400">Parsed</p></div>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg text-green-500">{uploadResult.summary?.inserted}</p><p className="text-slate-400">Inserted</p></div>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg text-amber-500">{uploadResult.summary?.skippedDuplicates}</p><p className="text-slate-400">Duplicates</p></div>
-              <div className="bg-white dark:bg-slate-800 rounded-lg p-2"><p className="font-bold text-lg text-rose-500">{uploadResult.summary?.failed}</p><p className="text-slate-400">Failed</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg">{uploadResult.summary?.totalParsed}</p><p className="text-white/60">Parsed</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg text-emerald-400">{uploadResult.summary?.inserted}</p><p className="text-white/60">Inserted</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg text-amber-400">{uploadResult.summary?.skippedDuplicates}</p><p className="text-white/60">Duplicates</p></div>
+              <div className="bg-surface-2 rounded-lg p-2"><p className="font-bold text-lg text-brand-rose-light">{uploadResult.summary?.failed}</p><p className="text-white/60">Failed</p></div>
             </div>
             {uploadResult.errors?.length > 0 && (
               <div className="mt-3 space-y-1 max-h-32 overflow-y-auto">
-                {uploadResult.errors.map((e: string, i: number) => <p key={i} className="text-xs text-amber-600 dark:text-amber-400">• {e}</p>)}
+                  {uploadResult.errors.map((e: string, i: number) => <p key={i} className="text-xs text-amber-400">• {e}</p>)}
               </div>
             )}
           </div>
         )}
-        <button onClick={handleUpload} disabled={uploading || !file || !batchId} className="flex items-center gap-2 px-6 py-2.5 bg-teal-600 hover:bg-teal-700 disabled:opacity-50 text-white text-sm font-bold rounded-xl transition-colors">
+        <button onClick={handleUpload} disabled={uploading || !file || !batchId} className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-brand-rose to-brand-orange hover:from-brand-rose-dark hover:to-brand-orange-dark disabled:opacity-50 text-white text-sm font-bold rounded-xl transition-colors">
           {uploading ? <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" /> : <Upload className="w-4 h-4" />}
           {uploading ? 'Processing...' : 'Upload & Process Attendance'}
         </button>

@@ -6,50 +6,50 @@
 
 @layer base {
   :root {
-    /* Light Mode — Clean White */
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    /* Light Mode — Warm Rose/Orange */
+    --background: 30 20% 98%;
+    --foreground: 20 14% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 20 14% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 263 70% 50%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --popover-foreground: 20 14% 12%;
+    --primary: 347 77% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 24 30% 96%;
+    --secondary-foreground: 20 14% 16%;
+    --muted: 24 30% 95%;
+    --muted-foreground: 20 8% 45%;
     --accent: 25 95% 53%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 263 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 24 20% 88%;
+    --input: 24 20% 88%;
+    --ring: 347 77% 50%;
     --radius: 0.75rem;
   }
 
   .dark {
-    /* Dark Mode — PW Skills Deep Dark */
-    --background: 240 15% 6%;
-    --foreground: 0 0% 95%;
-    --card: 240 15% 8%;
-    --card-foreground: 0 0% 95%;
-    --popover: 240 15% 6%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 263 70% 58%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 13% 12%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 240 13% 12%;
-    --muted-foreground: 240 5% 64.9%;
+    /* Dark Mode — Noble Classes Rose/Orange */
+    --background: 270 14% 5%;
+    --foreground: 20 14% 95%;
+    --card: 270 14% 7%;
+    --card-foreground: 20 14% 95%;
+    --popover: 270 14% 5%;
+    --popover-foreground: 20 14% 95%;
+    --primary: 347 77% 56%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 270 12% 12%;
+    --secondary-foreground: 20 14% 95%;
+    --muted: 270 12% 12%;
+    --muted-foreground: 270 6% 65%;
     --accent: 25 95% 53%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 13% 16%;
-    --input: 240 13% 14%;
-    --ring: 263 70% 58%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 40%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 270 12% 16%;
+    --input: 270 12% 14%;
+    --ring: 347 77% 56%;
   }
 }
 
@@ -96,26 +96,26 @@
   }
   .glass-card:hover {
     background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.04) 100%);
-    border-color: rgba(124, 58, 237, 0.3);
-    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.15);
+    border-color: rgba(244, 63, 94, 0.3);
+    box-shadow: 0 8px 32px rgba(244, 63, 94, 0.15);
     transform: translateY(-2px);
   }
 
   /* Gradient text */
   .text-gradient-brand {
-    background: linear-gradient(135deg, #7C3AED, #F97316);
+    background: linear-gradient(135deg, #F43F5E, #F97316);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-violet {
-    background: linear-gradient(135deg, #7C3AED, #8B5CF6);
+    background: linear-gradient(135deg, #F43F5E, #F97316);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-white {
-    background: linear-gradient(135deg, #ffffff, #c4b5fd);
+    background: linear-gradient(135deg, #ffffff, #fecdd3);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -124,25 +124,25 @@
   /* Gradient borders */
   .gradient-border {
     position: relative;
-    background: linear-gradient(var(--bg, #16162A), var(--bg, #16162A)) padding-box,
-                linear-gradient(135deg, #7C3AED, #F97316) border-box;
+    background: linear-gradient(var(--bg, #141019), var(--bg, #141019)) padding-box,
+                linear-gradient(135deg, #F43F5E, #F97316) border-box;
     border: 1px solid transparent;
   }
 
   /* Section backgrounds */
   .section-dark {
-    background: #0F0F1A;
+    background: #0B0A0F;
   }
   .section-surface {
-    background: #16162A;
+    background: #141019;
   }
   .section-card {
-    background: #1E1E35;
+    background: #1C1623;
   }
 
   /* Glow effects */
   .glow-violet {
-    box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), 0 0 60px rgba(124, 58, 237, 0.1);
+    box-shadow: 0 0 30px rgba(244, 63, 94, 0.3), 0 0 60px rgba(249, 115, 22, 0.1);
   }
   .glow-orange {
     box-shadow: 0 0 30px rgba(249, 115, 22, 0.3), 0 0 60px rgba(249, 115, 22, 0.1);
@@ -150,14 +150,14 @@
 
   /* Premium card */
   .card-premium {
-    background: linear-gradient(135deg, rgba(30, 30, 53, 0.9) 0%, rgba(22, 22, 42, 0.9) 100%);
-    border: 1px solid rgba(124, 58, 237, 0.15);
+    background: linear-gradient(135deg, rgba(28, 22, 35, 0.9) 0%, rgba(20, 16, 25, 0.9) 100%);
+    border: 1px solid rgba(244, 63, 94, 0.15);
     border-radius: 1rem;
     transition: all 0.3s ease;
   }
   .card-premium:hover {
-    border-color: rgba(124, 58, 237, 0.4);
-    box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+    border-color: rgba(244, 63, 94, 0.4);
+    box-shadow: 0 20px 60px rgba(244, 63, 94, 0.15);
     transform: translateY(-4px);
   }
 
@@ -171,12 +171,12 @@
   /* Button styles */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm text-white rounded-xl transition-all duration-300;
-    background: linear-gradient(135deg, #7C3AED, #6D28D9);
-    box-shadow: 0 4px 20px rgba(124, 58, 237, 0.4);
+    background: linear-gradient(135deg, #F43F5E, #E11D48);
+    box-shadow: 0 4px 20px rgba(244, 63, 94, 0.4);
   }
   .btn-primary:hover {
-    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
-    box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+    background: linear-gradient(135deg, #FB7185, #F43F5E);
+    box-shadow: 0 8px 30px rgba(244, 63, 94, 0.5);
     transform: translateY(-1px);
   }
   .btn-orange {
@@ -190,12 +190,12 @@
   }
   .btn-outline {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-xl border transition-all duration-300;
-    border-color: rgba(124, 58, 237, 0.4);
-    color: #8B5CF6;
+    border-color: rgba(244, 63, 94, 0.4);
+    color: #FB7185;
   }
   .btn-outline:hover {
-    background: rgba(124, 58, 237, 0.1);
-    border-color: rgba(124, 58, 237, 0.7);
+    background: rgba(244, 63, 94, 0.1);
+    border-color: rgba(244, 63, 94, 0.7);
   }
   .btn-ghost {
     @apply inline-flex items-center justify-center gap-2 px-6 py-3 font-semibold text-sm rounded-xl transition-all duration-300;
@@ -209,22 +209,22 @@
   /* Input styles */
   .input-dark {
     @apply w-full bg-surface-2 border text-white text-sm px-4 py-3 rounded-xl outline-none transition-all;
-    border-color: rgba(124, 58, 237, 0.2);
+    border-color: rgba(244, 63, 94, 0.2);
   }
   .input-dark::placeholder {
     color: rgba(255,255,255,0.3);
   }
   .input-dark:focus {
-    border-color: rgba(124, 58, 237, 0.6);
-    box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+    border-color: rgba(244, 63, 94, 0.6);
+    box-shadow: 0 0 0 3px rgba(244, 63, 94, 0.1);
   }
 
   /* Badge styles */
   .badge-violet {
     @apply inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full;
-    background: rgba(124, 58, 237, 0.15);
-    color: #a78bfa;
-    border: 1px solid rgba(124, 58, 237, 0.25);
+    background: rgba(244, 63, 94, 0.15);
+    color: #fb7185;
+    border: 1px solid rgba(244, 63, 94, 0.25);
   }
   .badge-orange {
     @apply inline-flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full;
@@ -254,11 +254,11 @@
     background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: rgba(124, 58, 237, 0.3);
+    background: rgba(244, 63, 94, 0.3);
     border-radius: 100px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(124, 58, 237, 0.5);
+    background: rgba(244, 63, 94, 0.5);
   }
 
   /* Section helpers */
@@ -283,8 +283,22 @@
   /* Stats section */
   .stat-card {
     @apply relative p-6 rounded-2xl text-center;
-    background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, rgba(249,115,22,0.04) 100%);
-    border: 1px solid rgba(124, 58, 237, 0.15);
+    background: linear-gradient(135deg, rgba(244,63,94,0.08) 0%, rgba(249,115,22,0.04) 100%);
+    border: 1px solid rgba(244, 63, 94, 0.15);
+  }
+
+  /* Animated gradient border */
+  .animated-border::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #F43F5E, #F97316, #F43F5E);
+    background-size: 200% 200%;
+    animation: borderDance 3s linear infinite;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s;
   }
 
   /* Animated gradient border */
@@ -297,7 +311,7 @@
     position: absolute;
     inset: -1px;
     border-radius: inherit;
-    background: linear-gradient(135deg, #7C3AED, #F97316, #7C3AED);
+    background: linear-gradient(135deg, #F43F5E, #F97316, #F43F5E);
     background-size: 200% 200%;
     animation: borderDance 3s linear infinite;
     z-index: -1;
@@ -315,13 +329,13 @@
   }
 }
 
-/* PW Skills-style hero mesh background */
+/* Noble Classes hero mesh background */
 .hero-bg {
   background:
-    radial-gradient(ellipse at 20% 50%, rgba(124,58,237,0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 50%, rgba(244,63,94,0.12) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 20%, rgba(249,115,22,0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 90%, rgba(124,58,237,0.06) 0%, transparent 40%),
-    #0F0F1A;
+    radial-gradient(ellipse at 60% 90%, rgba(244,63,94,0.06) 0%, transparent 40%),
+    #0B0A0F;
 }
 
 /* Course card hover gradient line */
@@ -332,7 +346,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, #7C3AED, #F97316);
+  background: linear-gradient(90deg, #F43F5E, #F97316);
   border-radius: 0 0 1rem 1rem;
   transform: scaleX(0);
   transition: transform 0.3s ease;

@@ -86,25 +86,25 @@ export const DashboardLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-950 flex transition-colors duration-300">
-      
+    <div className="min-h-screen bg-surface text-foreground flex transition-colors duration-300">
+
       {/* Sidebar - Desktop */}
-      <aside className="hidden lg:flex flex-col w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shrink-0">
-        
+      <aside className="hidden lg:flex flex-col w-64 bg-surface-1 border-r border-white/8 shrink-0">
+
         {/* Sidebar Header Logo */}
-        <div className="h-16 flex items-center px-6 border-b border-slate-200 dark:border-slate-800 space-x-2">
-          <GraduationCap className="h-6 w-6 text-teal-600 dark:text-teal-400" />
-          <span className="font-sans font-extrabold tracking-tight text-sm text-slate-800 dark:text-white">
+        <div className="h-16 flex items-center px-6 border-b border-white/8 space-x-2">
+          <GraduationCap className="h-6 w-6 text-brand-rose" />
+          <span className="font-sans font-extrabold tracking-tight text-sm text-white">
             NOBLE PORTAL
           </span>
         </div>
 
         {/* User Context card */}
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800/50">
-          <div className="bg-slate-50 dark:bg-slate-950/40 p-3.5 rounded-xl border border-slate-100 dark:border-slate-800/40">
-            <p className="text-xs text-slate-400 font-medium">Logged in as</p>
-            <p className="text-sm font-bold text-slate-800 dark:text-slate-100 truncate mt-0.5">{user?.email}</p>
-            <span className="inline-block mt-2 bg-teal-500/10 text-teal-600 dark:text-teal-400 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+        <div className="p-4 border-b border-white/8">
+          <div className="bg-surface-2 p-3.5 rounded-xl border border-white/8">
+            <p className="text-xs text-white/50 font-medium">Logged in as</p>
+            <p className="text-sm font-bold text-white truncate mt-0.5">{user?.email}</p>
+            <span className="inline-block mt-2 bg-brand-rose/15 text-brand-rose-light text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
               {user?.role}
             </span>
           </div>
@@ -121,11 +121,11 @@ export const DashboardLayout: React.FC = () => {
                 to={link.path}
                 className={`flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all ${
                   isActive
-                    ? 'bg-teal-600 text-white shadow-md shadow-teal-500/15'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-200'
+                    ? 'bg-gradient-to-r from-brand-rose to-brand-orange text-white shadow-md shadow-brand-rose/20'
+                    : 'text-white/60 hover:bg-white/5 hover:text-white'
                 }`}
               >
-                <Icon className={`w-4 h-4 mr-3 ${isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-500'}`} />
+                <Icon className={`w-4 h-4 mr-3 ${isActive ? 'text-white' : 'text-white/40 group-hover:text-white/60'}`} />
                 {link.label}
               </Link>
             );
@@ -133,10 +133,10 @@ export const DashboardLayout: React.FC = () => {
         </nav>
 
         {/* Sidebar Footer Log out */}
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800">
+        <div className="p-4 border-t border-white/8">
           <button
             onClick={handleLogout}
-            className="flex items-center w-full px-4 py-3 text-sm font-medium text-rose-500 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors"
+            className="flex items-center w-full px-4 py-3 text-sm font-medium text-brand-rose-light rounded-xl hover:bg-brand-rose/10 transition-colors"
           >
             <LogOut className="w-4 h-4 mr-3" />
             Logout Session
@@ -146,20 +146,20 @@ export const DashboardLayout: React.FC = () => {
 
       {/* Main Body */}
       <div className="flex-grow flex flex-col min-w-0">
-        
+
         {/* Dashboard Topbar */}
-        <header className="h-16 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between px-6 shrink-0 transition-colors">
-          
+        <header className="h-16 bg-surface-1 border-b border-white/8 flex items-center justify-between px-6 shrink-0 transition-colors">
+
           {/* Mobile menu trigger */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className="lg:hidden p-2 -ml-2 rounded-lg text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800"
+            className="lg:hidden p-2 -ml-2 rounded-lg text-white/60 hover:bg-white/5"
           >
             <Menu className="w-6 h-6" />
           </button>
 
           {/* Quick Header Greeting */}
-          <h1 className="hidden sm:block text-sm font-semibold text-slate-800 dark:text-slate-100">
+          <h1 className="hidden sm:block text-sm font-semibold text-white/90">
             Welcome back, {user?.role.toLowerCase()}
           </h1>
 
@@ -168,17 +168,17 @@ export const DashboardLayout: React.FC = () => {
             {/* Theme switcher */}
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 dark:text-slate-400 transition-colors"
+              className="p-2 rounded-full hover:bg-white/5 text-white/60 transition-colors"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
 
             {/* User Profile display */}
-            <div className="flex items-center space-x-2 border-l border-slate-200 dark:border-slate-800 pl-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-teal-500 to-indigo-600 text-white flex items-center justify-center font-bold text-sm">
+            <div className="flex items-center space-x-2 border-l border-white/8 pl-3">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-brand-rose to-brand-orange text-white flex items-center justify-center font-bold text-sm">
                 {user?.email[0].toUpperCase()}
               </div>
-              <span className="hidden md:block text-xs font-semibold text-slate-700 dark:text-slate-300">
+              <span className="hidden md:block text-xs font-semibold text-white/80">
                 {user?.email.split('@')[0]}
               </span>
             </div>
@@ -194,28 +194,28 @@ export const DashboardLayout: React.FC = () => {
 
       {/* Mobile Drawer Backdrop */}
       {sidebarOpen && (
-        <div 
-          className="fixed inset-0 z-50 bg-slate-950/40 backdrop-blur-sm lg:hidden"
+        <div
+          className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm lg:hidden"
           onClick={() => setSidebarOpen(false)}
         />
       )}
 
       {/* Sidebar - Mobile Drawer */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-64 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex flex-col transform transition-transform duration-300 ease-in-out lg:hidden ${
+        className={`fixed inset-y-0 left-0 z-50 w-64 bg-surface-1 border-r border-white/8 flex flex-col transform transition-transform duration-300 ease-in-out lg:hidden ${
           sidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-        <div className="h-16 flex items-center justify-between px-6 border-b border-slate-200 dark:border-slate-800">
+        <div className="h-16 flex items-center justify-between px-6 border-b border-white/8">
           <div className="flex items-center space-x-2">
-            <GraduationCap className="h-6 w-6 text-teal-600 dark:text-teal-400" />
-            <span className="font-sans font-extrabold tracking-tight text-sm text-slate-800 dark:text-white">
+            <GraduationCap className="h-6 w-6 text-brand-rose" />
+            <span className="font-sans font-extrabold tracking-tight text-sm text-white">
               NOBLE PORTAL
             </span>
           </div>
           <button
             onClick={() => setSidebarOpen(false)}
-            className="p-1.5 rounded-lg text-slate-500 hover:bg-slate-50 dark:hover:bg-slate-800"
+            className="p-1.5 rounded-lg text-white/60 hover:bg-white/5"
           >
             <X className="w-5 h-5" />
           </button>
@@ -232,24 +232,24 @@ export const DashboardLayout: React.FC = () => {
                 onClick={() => setSidebarOpen(false)}
                 className={`flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all ${
                   isActive
-                    ? 'bg-teal-600 text-white shadow-md shadow-teal-500/15'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/60 hover:text-slate-900 dark:hover:text-slate-200'
+                    ? 'bg-gradient-to-r from-brand-rose to-brand-orange text-white shadow-md shadow-brand-rose/20'
+                    : 'text-white/60 hover:bg-white/5 hover:text-white'
                 }`}
               >
-                <Icon className={`w-4 h-4 mr-3 ${isActive ? 'text-white' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 mr-3 ${isActive ? 'text-white' : 'text-white/40'}`} />
                 {link.label}
               </Link>
             );
           })}
         </nav>
 
-        <div className="p-4 border-t border-slate-200 dark:border-slate-800">
+        <div className="p-4 border-t border-white/8">
           <button
             onClick={() => {
               setSidebarOpen(false);
               handleLogout();
             }}
-            className="flex items-center w-full px-4 py-3 text-sm font-medium text-rose-500 rounded-xl hover:bg-rose-50 dark:hover:bg-rose-950/20 transition-colors"
+            className="flex items-center w-full px-4 py-3 text-sm font-medium text-brand-rose-light rounded-xl hover:bg-brand-rose/10 transition-colors"
           >
             <LogOut className="w-4 h-4 mr-3" />
             Logout Session
